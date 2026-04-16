@@ -14,11 +14,12 @@
 @keyframes eblink-c{0%,85%,100%{opacity:0}90%,95%{opacity:1}}
 .tl{transform-origin:156px 95px;animation:wag 1.3s ease-in-out infinite}
 @keyframes wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(16deg)}}
-.p0{opacity:0;animation:sp 20s 0s infinite}
-.p1{opacity:0;animation:sp 20s 4s infinite}
-.p2{opacity:0;animation:sp 20s 8s infinite}
-.p3{opacity:0;animation:sp 20s 12s infinite}
-.p4{opacity:0;animation:sp 20s 16s infinite}
+.p0,.p1,.p2,.p3,.p4{opacity:0}
+.p0{animation:sp 20s 0s infinite}
+.p1{animation:sp 20s 4s infinite}
+.p2{animation:sp 20s 8s infinite}
+.p3{animation:sp 20s 12s infinite}
+.p4{animation:sp 20s 16s infinite}
 @keyframes sp{0%,2%{opacity:0}7%{opacity:1}17%{opacity:1}22%,100%{opacity:0}}
 .cur{animation:cur 0.8s step-end infinite}
 @keyframes cur{0%,100%{opacity:1}50%{opacity:0}}
@@ -34,28 +35,17 @@
 .sk4{animation:sk 9s 1s linear infinite}
 @keyframes sk{0%{transform:translate(0,0) rotate(0deg);opacity:0}8%{opacity:0.65}92%{opacity:0.3}100%{transform:translate(-28px,430px) rotate(540deg);opacity:0}}
 </style>
-
-<!-- card bg -->
 <rect width="800" height="420" rx="20" fill="#fffaff"/>
 <rect width="800" height="420" rx="20" fill="none" stroke="#ead8f5" stroke-width="1.5"/>
-
-<!-- corner decoration dots -->
 <circle cx="762" cy="30" r="3" fill="#e8d0f5"/>
 <circle cx="750" cy="42" r="2" fill="#f5c8e0"/>
 <circle cx="38"  cy="392" r="2.5" fill="#dcc8f5"/>
 <circle cx="52"  cy="404" r="2" fill="#f0d0e8"/>
-
-<!-- sakura petals -->
 <ellipse cx="660" cy="-8" rx="7" ry="5" fill="#f8c8d8" class="sk1"/>
 <ellipse cx="715" cy="-5" rx="5" ry="7" fill="#f5c0d4" class="sk2"/>
 <circle  cx="752" cy="-9" r="5"          fill="#fdd0e4" class="sk3"/>
 <ellipse cx="688" cy="-6" rx="6" ry="4" fill="#f8c8d8" class="sk4"/>
-
-<!-- ===== AVATAR BOX ===== -->
 <rect x="28" y="28" width="150" height="150" rx="18" fill="#f7effe" stroke="#dfc8f5" stroke-width="1.5"/>
-
-<!-- pixel shiba body -->
-<!-- 210 rects -->
 <rect x="63" y="38" width="7" height="7" fill="#F5C87A"/>
 <rect x="70" y="38" width="7" height="7" fill="#F5C87A"/>
 <rect x="133" y="38" width="7" height="7" fill="#F5C87A"/>
@@ -266,98 +256,59 @@
 <rect x="63" y="157" width="7" height="7" fill="#D8952A"/>
 <rect x="140" y="157" width="7" height="7" fill="#D8952A"/>
 <rect x="147" y="157" width="7" height="7" fill="#D8952A"/>
-
-
-<!-- forehead soft patch -->
 <rect x="83" y="59" width="42" height="9" rx="4" fill="#FFF4E8" opacity="0.45"/>
-
-<!-- eye open group -->
 <g class="eo">
   <rect x="70" y="80" width="14" height="14" rx="2" fill="#2A1808"/>
   <rect x="126" y="80" width="14" height="14" rx="2" fill="#2A1808"/>
   <rect x="72" y="81" width="4" height="4" rx="1" fill="#ffffff" opacity="0.5"/>
   <rect x="128" y="81" width="4" height="4" rx="1" fill="#ffffff" opacity="0.5"/>
 </g>
-<!-- eye closed group -->
 <g class="ec">
   <rect x="70" y="86" width="14" height="5" rx="2" fill="#2A1808"/>
   <rect x="126" y="86" width="14" height="5" rx="2" fill="#2A1808"/>
 </g>
-
-<!-- blush -->
 <ellipse cx="59"  cy="106" rx="9" ry="6" fill="#F4A0B0" opacity="0.6"/>
 <ellipse cx="137" cy="106" rx="9" ry="6" fill="#F4A0B0" opacity="0.6"/>
-
-<!-- tail (animated) -->
 <g class="tl">
   <circle cx="156" cy="92" r="8" fill="#F5C87A"/>
   <circle cx="160" cy="82" r="7" fill="#F5C87A"/>
   <circle cx="161" cy="73" r="6" fill="#D8952A"/>
 </g>
-
-<!-- ===== RIGHT PANEL ===== -->
-
-<!-- jp subtitle -->
-<text x="200" y="58" font-family="sans-serif" font-size="11" fill="#c0a0d8" letter-spacing="4">ri yu u  se i  .  gae bal ja</text>
-
-<!-- name -->
+<text x="200" y="58" font-family="sans-serif" font-size="11" fill="#c0a0d8" letter-spacing="4">A Engineer/Researcher</text>
 <text x="200" y="95" font-family="sans-serif" font-size="30" font-weight="700" fill="#3a2460">Cheng Liu</text>
-
-<!-- handle -->
-<text x="200" y="117" font-family="monospace" font-size="12" fill="#9878b8">@chengliu01 . Dlink . China</text>
-
-<!-- typing phrases -->
+<text x="200" y="117" font-family="monospace" font-size="12" fill="#9878b8">@chengliu01 · Dlink · China</text>
 <g font-family="sans-serif" font-size="14" fill="#7040a8">
-  <text x="200" y="143" class="p0">build things that spark joy</text>
-  <text x="200" y="143" class="p1">Conan... its Kudo Shinichi</text>
-  <text x="200" y="143" class="p2">mu s music start!</text>
-  <text x="200" y="143" class="p3">git commit -m yi qie shun li</text>
-  <text x="200" y="143" class="p4">shiba is my spirit animal</text>
+<text x="200" y="143" class="p0">build things that spark joy</text>
+<text x="200" y="143" class="p1">Conan... its Kudo Shinichi</text>
+<text x="200" y="143" class="p2">mu's music start!</text>
+<text x="200" y="143" class="p3">git commit -m yi qie shun li</text>
+<text x="200" y="143" class="p4">shiba is my spirit animal</text>
   <text x="200" y="143" class="cur" fill="#b070e0">|</text>
 </g>
-
-<!-- tag pills -->
-<rect x="200" y="155" width="88"  height="24" rx="12" fill="#f0e8ff" stroke="#d4b8f8" stroke-width="1"/>
-<text x="244" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#7040b8" text-anchor="middle">Developer</text>
-
-<rect x="298" y="155" width="76"  height="24" rx="12" fill="#fff0f6" stroke="#f5c0d8" stroke-width="1"/>
-<text x="336" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#c04888" text-anchor="middle">Shiba fan</text>
-
-<rect x="384" y="155" width="76"  height="24" rx="12" fill="#eef4ff" stroke="#b8d0f8" stroke-width="1"/>
-<text x="422" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#3060b8" text-anchor="middle">Net. Infra</text>
-
-<!-- ===== DIVIDER ===== -->
+<rect x="200" y="155" width="96" height="24" rx="12" fill="#f0e8ff" stroke="#d4b8f8" stroke-width="1"/>
+<text x="248" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#7040b8" text-anchor="middle">Developer</text>
+<rect x="306" y="155" width="136" height="24" rx="12" fill="#fff0f6" stroke="#f5c0d8" stroke-width="1"/>
+<text x="374" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#c04888" text-anchor="middle">ACG Enthusiast</text>
+<rect x="452" y="155" width="152" height="24" rx="12" fill="#eef4ff" stroke="#b8d0f8" stroke-width="1"/>
+<text x="528" y="171" font-family="sans-serif" font-size="12" font-weight="600" fill="#3060b8" text-anchor="middle">Agentic Engineer</text>
 <line x1="28" y1="200" x2="772" y2="200" stroke="url(#dg)" stroke-width="1"/>
-
-<!-- ===== ABOUT ME ===== -->
 <text x="36" y="224" font-family="sans-serif" font-size="10" fill="#c0a0d8" letter-spacing="3">A B O U T   M E</text>
-
-<!-- row 1 -->
-<circle cx="46"  cy="252" r="5" fill="#a8c4f8"/>
-<text x="60"  y="251" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Wang Luo Gong Cheng Shi</text>
-<text x="60"  y="268" font-family="sans-serif" font-size="12" fill="#a888cc">Dlink . Shen Zhen</text>
-
+<circle cx="46" cy="252" r="5" fill="#a8c4f8"/>
+<text x="60" y="251" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Network Engineer</text>
+<text x="60" y="268" font-family="sans-serif" font-size="12" fill="#a888cc">Dlink · Shenzhen</text>
 <circle cx="422" cy="252" r="5" fill="#f8a8c8"/>
-<text x="436" y="251" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Er Ci Yuan Ai Hao Zhe</text>
-<text x="436" y="268" font-family="sans-serif" font-size="12" fill="#a888cc">Ke Nan / LoveLive</text>
-
-<!-- row 2 -->
-<circle cx="46"  cy="300" r="5" fill="#c0a8f8"/>
-<text x="60"  y="299" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Dai Ma Jiang Ren</text>
-<text x="60"  y="316" font-family="sans-serif" font-size="12" fill="#a888cc">Python . TypeScript</text>
-
+<text x="436" y="251" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">ACG Enthusiast</text>
+<text x="436" y="268" font-family="sans-serif" font-size="12" fill="#a888cc">Detective Conan / LoveLive</text>
+<circle cx="46" cy="300" r="5" fill="#c0a8f8"/>
+<text x="60" y="299" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Code Craftsman</text>
+<text x="60" y="316" font-family="sans-serif" font-size="12" fill="#a888cc">LLM · RL · Agent</text>
 <circle cx="422" cy="300" r="5" fill="#a8e0b8"/>
-<text x="436" y="299" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Chai Quan Chan Shi Guan</text>
+<text x="436" y="299" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">Shiba Appreciation</text>
 <text x="436" y="316" font-family="sans-serif" font-size="12" fill="#a888cc">Shiba Inu forever</text>
-
-<!-- ===== FOOTER ===== -->
 <line x1="28" y1="345" x2="772" y2="345" stroke="url(#dg)" stroke-width="1"/>
-
 <circle cx="46" cy="372" r="5" fill="#6db85a" class="sdot"/>
-<text x="58" y="376" font-family="sans-serif" font-size="11" font-weight="600" fill="#5aa84a">Online . coding now</text>
-
+<text x="58" y="376" font-family="sans-serif" font-size="11" font-weight="600" fill="#5aa84a">Online · coding now</text>
 <text x="690" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st1">&#x2666;</text>
 <text x="712" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st2">&#x2666;</text>
 <text x="734" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st3">&#x2666;</text>
-
 </svg>
