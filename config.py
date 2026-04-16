@@ -3,7 +3,7 @@
 # ═══════════════════════════════════════════
 
 NAME        = "Cheng Liu"
-HANDLE      = "@chengliu01 · Dlink · China"
+HANDLE      = "@chengliu01 · China"
 
 # 卡片右上角小字（日文/韩文装饰，可改可删）
 SUBTITLE    = "A Engineer/Researcher"
@@ -27,7 +27,7 @@ TAGS = [
 
 # About Me 四格（每格: 标题 + 副标题 + 圆点颜色）
 ABOUT = [
-    {"title": "Network Engineer",         "sub": "Dlink · Shenzhen",      "dot": "#a8c4f8"},
+    {"title": "LLM Engineer",         "sub": "Moonshot/Tencent · China",      "dot": "#a8c4f8"},
     {"title": "ACG Enthusiast",           "sub": "Detective Conan / LoveLive", "dot": "#f8a8c8"},
     {"title": "Code Craftsman",           "sub": "LLM · RL · Agent",      "dot": "#c0a8f8"},
     {"title": "Shiba Appreciation",       "sub": "Shiba Inu forever",     "dot": "#a8e0b8"},
