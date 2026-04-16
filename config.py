@@ -33,5 +33,12 @@ ABOUT = [
     {"title": "Shiba Appreciation",       "sub": "Shiba Inu forever",     "dot": "#a8e0b8"},
 ]
 
+# 自我介绍（最多 3 句，每句建议不超过 60 个字符以免超出卡片宽度）
+BIO = [
+    "LLM engineer & researcher @ KIMI @ Tencent, Shenzhen.",
+    "Fascinated by LLMs, RL, and building agentic systems.",
+    "Recharging with Detective Conan and shiba inu content.",
+]
+
 # 底部状态文字
 STATUS_TEXT = "Online · coding now"

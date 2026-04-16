@@ -1,4 +1,5 @@
 from config import *
+from xml.sax.saxutils import escape as _xe
 
 # ── tag theme lookup ──────────────────────────────────────────
 THEMES = {
@@ -73,6 +74,17 @@ def build_about():
         out.append(f'<text x="{tx}" y="{ty2}" font-family="sans-serif" font-size="12" fill="#a888cc">{item["sub"]}</text>')
     return '\n'.join(out)
 
+# ── bio lines ─────────────────────────────────────────────────
+def build_bio():
+    out = []
+    base_y = 390
+    for i, line in enumerate(BIO[:3]):
+        out.append(
+            f'<text x="36" y="{base_y + i * 22}" '
+            f'font-family="sans-serif" font-size="13" fill="#5a4070">{_xe(line)}</text>'
+        )
+    return '\n'.join(out)
+
 # ── phrase animations ─────────────────────────────────────────
 def build_phrases():
     out = []
@@ -81,7 +93,7 @@ def build_phrases():
     return '\n'.join(out)
 
 # ── assemble SVG ──────────────────────────────────────────────
-svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
 <defs>
   <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0"   stop-color="#e8d4f8" stop-opacity="0"/>
@@ -116,14 +128,14 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="8
 .sk2{{animation:sk 8s 2.5s linear infinite}}
 .sk3{{animation:sk 6s 4.5s linear infinite}}
 .sk4{{animation:sk 9s 1s linear infinite}}
-@keyframes sk{{0%{{transform:translate(0,0) rotate(0deg);opacity:0}}8%{{opacity:0.65}}92%{{opacity:0.3}}100%{{transform:translate(-28px,430px) rotate(540deg);opacity:0}}}}
+@keyframes sk{{0%{{transform:translate(0,0) rotate(0deg);opacity:0}}8%{{opacity:0.65}}92%{{opacity:0.3}}100%{{transform:translate(-28px,510px) rotate(540deg);opacity:0}}}}
 </style>
-<rect width="800" height="420" rx="20" fill="#fffaff"/>
-<rect width="800" height="420" rx="20" fill="none" stroke="#ead8f5" stroke-width="1.5"/>
+<rect width="800" height="500" rx="20" fill="#fffaff"/>
+<rect width="800" height="500" rx="20" fill="none" stroke="#ead8f5" stroke-width="1.5"/>
 <circle cx="762" cy="30" r="3" fill="#e8d0f5"/>
 <circle cx="750" cy="42" r="2" fill="#f5c8e0"/>
-<circle cx="38"  cy="392" r="2.5" fill="#dcc8f5"/>
-<circle cx="52"  cy="404" r="2" fill="#f0d0e8"/>
+<circle cx="38"  cy="472" r="2.5" fill="#dcc8f5"/>
+<circle cx="52"  cy="484" r="2" fill="#f0d0e8"/>
 <ellipse cx="660" cy="-8" rx="7" ry="5" fill="#f8c8d8" class="sk1"/>
 <ellipse cx="715" cy="-5" rx="5" ry="7" fill="#f5c0d4" class="sk2"/>
 <circle  cx="752" cy="-9" r="5"          fill="#fdd0e4" class="sk3"/>
@@ -160,11 +172,14 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="8
 <text x="36" y="224" font-family="sans-serif" font-size="10" fill="#c0a0d8" letter-spacing="3">A B O U T   M E</text>
 {build_about()}
 <line x1="28" y1="345" x2="772" y2="345" stroke="url(#dg)" stroke-width="1"/>
-<circle cx="46" cy="372" r="5" fill="#6db85a" class="sdot"/>
-<text x="58" y="376" font-family="sans-serif" font-size="11" font-weight="600" fill="#5aa84a">{STATUS_TEXT}</text>
-<text x="690" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st1">&#x2666;</text>
-<text x="712" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st2">&#x2666;</text>
-<text x="734" y="378" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st3">&#x2666;</text>
+<text x="36" y="368" font-family="sans-serif" font-size="10" fill="#c0a0d8" letter-spacing="3">I N T R O</text>
+{build_bio()}
+<line x1="28" y1="455" x2="772" y2="455" stroke="url(#dg)" stroke-width="1"/>
+<circle cx="46" cy="477" r="5" fill="#6db85a" class="sdot"/>
+<text x="58" y="481" font-family="sans-serif" font-size="11" font-weight="600" fill="#5aa84a">{STATUS_TEXT}</text>
+<text x="690" y="483" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st1">&#x2666;</text>
+<text x="712" y="483" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st2">&#x2666;</text>
+<text x="734" y="483" font-family="sans-serif" font-size="16" fill="#c8b0e8" class="st3">&#x2666;</text>
 </svg>'''
 
 import xml.etree.ElementTree as ET
