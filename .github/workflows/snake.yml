@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Generate snake SVG
         uses: Platane/snk/svg-only@v3
         with:
@@ -20,7 +19,6 @@ jobs:
           outputs: |
             dist/snake.svg?palette=github
             dist/snake-dark.svg?palette=github-dark
-
       - name: Commit and push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

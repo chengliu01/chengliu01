@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+<defs>
+  <clipPath id="avatarClip">
+    <rect x="36" y="36" width="130" height="130" rx="16"/>
+  </clipPath>
+  <clipPath id="cardClip">
+    <rect width="800" height="420" rx="20"/>
+  </clipPath>
+
+  <!-- petal shape -->
+  <path id="petal" d="M0,-6 C3,-6 6,-3 6,0 C6,3 3,6 0,6 C-3,6 -6,3 -6,0 C-6,-3 -3,-6 0,-6Z"/>
+</defs>
+
+<style>
+  /* base */
+  .card-bg    { fill:#fffaff; }
+  .card-border{ fill:none; stroke:#e8d8f8; stroke-width:1.5; }
+  .avatar-bg  { fill:#f5eeff; stroke:#e0ccf8; stroke-width:1.5; }
+
+  /* pixel shiba */
+  .s-cream  { fill:#F5C87A; }
+  .s-tan    { fill:#E0A850; }
+  .s-inner  { fill:#E8906A; }
+  .s-white  { fill:#FFF8EE; }
+  .s-dark   { fill:#2D1A0E; }
+  .s-nose   { fill:#3D1A0A; }
+  .s-blush  { fill:#F4A0B0; opacity:0.65; }
+  .s-tongue { fill:#E87878; }
+  .eye-open { animation: blink 4s ease-in-out infinite; }
+  .eye-shut { opacity:0; animation: blink-shut 4s ease-in-out infinite; }
+  @keyframes blink      { 0%,90%,100%{opacity:1} 93%,97%{opacity:0} }
+  @keyframes blink-shut { 0%,90%,100%{opacity:0} 93%,97%{opacity:1} }
+  .tail { transform-origin:144px 132px; animation:wagtail 1.1s ease-in-out infinite; }
+  @keyframes wagtail { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(14deg)} }
+
+  /* text */
+  .t-name   { font:700 28px sans-serif; fill:#3a2460; }
+  .t-handle { font:400 13px monospace; fill:#9070b8; }
+  .t-sub    { font:400 12px sans-serif; fill:#a888cc; letter-spacing:3px; }
+  .t-label  { font:600 14px sans-serif; fill:#4a3470; }
+  .t-desc   { font:400 12px sans-serif; fill:#9878b8; }
+  .t-tag    { font:500 12px sans-serif; }
+  .t-status { font:500 11px sans-serif; fill:#6db85a; }
+  .t-stars  { font:400 14px sans-serif; fill:#c8b0e8; }
+  .t-typing { font:500 14px sans-serif; fill:#7a50a8; }
+
+  /* typing animation */
+  .typing-text { animation: typing-cycle 18s steps(1) infinite; }
+  .cursor { animation: cursor-blink 0.7s step-end infinite; }
+  @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* typing phases - show different text at different times */
+  .phrase-0,.phrase-1,.phrase-2,.phrase-3,.phrase-4 { opacity:0; }
+  .phrase-0 { animation: show-phrase 18s 0s infinite; }
+  .phrase-1 { animation: show-phrase 18s 3.6s infinite; }
+  .phrase-2 { animation: show-phrase 18s 7.2s infinite; }
+  .phrase-3 { animation: show-phrase 18s 10.8s infinite; }
+  .phrase-4 { animation: show-phrase 18s 14.4s infinite; }
+  @keyframes show-phrase {
+    0%      { opacity:1; }
+    18%     { opacity:1; }
+    19%,100%{ opacity:0; }
+  }
+
+  /* sakura petals */
+  .p1 { animation: fall1 6s 0s linear infinite; }
+  .p2 { animation: fall1 7s 1.5s linear infinite; }
+  .p3 { animation: fall1 5.5s 3s linear infinite; }
+  .p4 { animation: fall1 8s 0.8s linear infinite; }
+  .p5 { animation: fall1 6.5s 4s linear infinite; }
+  .p6 { animation: fall1 7.5s 2.2s linear infinite; }
+  @keyframes fall1 {
+    0%   { transform:translate(0,0) rotate(0deg);   opacity:0; }
+    5%   { opacity:0.7; }
+    95%  { opacity:0.4; }
+    100% { transform:translate(-30px,430px) rotate(540deg); opacity:0; }
+  }
+
+  /* dot tags */
+  .tag-purple { fill:#f0e8ff; stroke:#d0b8f8; stroke-width:1; }
+  .tag-pink   { fill:#fff0f6; stroke:#f8c0d8; stroke-width:1; }
+  .tag-blue   { fill:#eef4ff; stroke:#b8d0f8; stroke-width:1; }
+
+  /* about grid items */
+  .dot-blue   { fill:#a8c8f8; }
+  .dot-pink   { fill:#f8a8c8; }
+  .dot-purple { fill:#c8a8f8; }
+  .dot-green  { fill:#a8e0b8; }
+
+  /* status dot pulse */
+  .status-dot { fill:#6db85a; animation:pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot {
+    0%,100%{ opacity:1; r:4px; }
+    50%    { opacity:0.6; r:5.5px; }
+  }
+
+  /* divider shimmer */
+  .divider { stroke:url(#divGrad); stroke-width:1; }
+
+  /* star twinkle */
+  .star { animation: twinkle 1.8s ease-in-out infinite; fill:#c8b0e8; }
+  .star:nth-child(2){ animation-delay:0.6s; }
+  .star:nth-child(3){ animation-delay:1.2s; }
+  @keyframes twinkle { 0%,100%{opacity:0.4;font-size:14px} 50%{opacity:1;font-size:16px} }
+</style>
+
+<!-- card background -->
+<rect width="800" height="420" rx="20" class="card-bg"/>
+<rect width="800" height="420" rx="20" class="card-border"/>
+
+<!-- subtle dot grid pattern -->
+<g opacity="0.06">
+  <rect x="0" y="0" width="800" height="420" fill="url(#dots)" rx="20"/>
+</g>
+
+<!-- sakura petals floating -->
+<g fill="#f9c8d8" opacity="0.7">
+  <circle class="p1" cx="680" cy="-10" r="5"/>
+  <ellipse class="p2" cx="720" cy="-8" rx="6" ry="4"/>
+  <circle class="p3" cx="760" cy="-6" r="4"/>
+  <ellipse class="p4" cx="640" cy="-12" rx="5" ry="3"/>
+  <circle class="p5" cx="700" cy="-10" r="3"/>
+  <ellipse class="p6" cx="650" cy="-8" rx="4" ry="5"/>
+</g>
+
+<!-- ═══════════ LEFT: AVATAR BOX ═══════════ -->
+<rect x="28" y="28" width="146" height="146" rx="18" class="avatar-bg"/>
+
+<!-- ── pixel shiba (scaled inside avatar box, origin 28,28, size 146x146) ── -->
+<!-- pixel size = 6px, offset so shiba is centered -->
+<g transform="translate(35,32) scale(0.82)">
+  <!-- tail (animated) -->
+  <g class="tail">
+    <rect x="131" y="100" width="18" height="14" rx="7" class="s-cream"/>
+    <rect x="133" y="87"  width="15" height="14" rx="7" class="s-cream"/>
+    <rect x="135" y="76"  width="12" height="12" rx="6" class="s-tan"/>
+  </g>
+  <!-- ears -->
+  <rect x="22"  y="10" width="22" height="28" rx="7" class="s-cream"/>
+  <rect x="26"  y="15" width="13" height="16" rx="5" class="s-inner"/>
+  <rect x="96"  y="10" width="22" height="28" rx="7" class="s-cream"/>
+  <rect x="100" y="15" width="13" height="16" rx="5" class="s-inner"/>
+  <!-- head -->
+  <rect x="18"  y="26" width="104" height="70" rx="16" class="s-cream"/>
+  <!-- forehead white -->
+  <rect x="42"  y="28" width="56"  height="22" rx="10" class="s-white" opacity="0.6"/>
+  <!-- muzzle -->
+  <rect x="30"  y="68" width="80"  height="28" rx="12" fill="#FDECD4"/>
+  <!-- eyes open -->
+  <g class="eye-open">
+    <rect x="32"  y="38" width="24" height="22" rx="8" class="s-dark"/>
+    <rect x="36"  y="41" width="8"  height="8"  rx="3" fill="#fff" opacity="0.5"/>
+    <rect x="48"  y="51" width="5"  height="5"  rx="2" fill="#fff" opacity="0.3"/>
+    <rect x="84"  y="38" width="24" height="22" rx="8" class="s-dark"/>
+    <rect x="88"  y="41" width="8"  height="8"  rx="3" fill="#fff" opacity="0.5"/>
+    <rect x="100" y="51" width="5"  height="5"  rx="2" fill="#fff" opacity="0.3"/>
+  </g>
+  <!-- eyes closed -->
+  <g class="eye-shut">
+    <rect x="32" y="48" width="24" height="6" rx="3" class="s-dark"/>
+    <rect x="84" y="48" width="24" height="6" rx="3" class="s-dark"/>
+  </g>
+  <!-- nose -->
+  <rect x="56"  y="70" width="28" height="15" rx="7" class="s-nose"/>
+  <rect x="60"  y="71" width="9"  height="5"  rx="3" fill="#fff" opacity="0.3"/>
+  <!-- mouth -->
+  <rect x="64"  y="83" width="12" height="8"  rx="4" class="s-tongue"/>
+  <rect x="48"  y="85" width="18" height="5"  rx="3" fill="#c08050" opacity="0.5"/>
+  <rect x="74"  y="85" width="18" height="5"  rx="3" fill="#c08050" opacity="0.5"/>
+  <!-- blush -->
+  <ellipse cx="28"  cy="72" rx="10" ry="7" class="s-blush"/>
+  <ellipse cx="112" cy="72" rx="10" ry="7" class="s-blush"/>
+  <!-- body -->
+  <rect x="16"  y="92" width="108" height="44" rx="14" class="s-cream"/>
+  <rect x="32"  y="96" width="76"  height="32" rx="10" class="s-white" opacity="0.55"/>
+  <!-- legs -->
+  <rect x="20"  y="122" width="26" height="22" rx="8" class="s-tan"/>
+  <rect x="94"  y="122" width="26" height="22" rx="8" class="s-tan"/>
+</g>
+
+<!-- ═══════════ RIGHT: INFO AREA ═══════════ -->
+
+<!-- japanese subtitle -->
+<text x="200" y="60" class="t-sub">り ゅ う &nbsp; せ い &nbsp; · &nbsp; 개 발 자</text>
+
+<!-- name -->
+<text x="200" y="98" class="t-name">Cheng Liu</text>
+
+<!-- handle line -->
+<text x="200" y="120" class="t-handle">@chengliu01 · Dlink · 中国</text>
+
+<!-- typing animation area -->
+<g transform="translate(200,140)">
+  <text class="t-typing phrase-0">build things that spark joy ✨</text>
+  <text class="t-typing phrase-1">名前は？…柯南だよ 🔍</text>
+  <text class="t-typing phrase-2">μ's music start! 🎵</text>
+  <text class="t-typing phrase-3">git commit -m '一切顺利'</text>
+  <text class="t-typing phrase-4">柴犬 is my spirit animal 🐕</text>
+  <text x="0" y="0" class="t-typing cursor" style="fill:#9060c8">|</text>
+</g>
+
+<!-- tags -->
+<rect x="200" y="158" width="88"  height="26" rx="13" class="tag-purple"/>
+<text x="244" y="175" text-anchor="middle" class="t-tag" fill="#7a52b8">Developer</text>
+
+<rect x="297" y="158" width="76"  height="26" rx="13" class="tag-pink"/>
+<text x="335" y="175" text-anchor="middle" class="t-tag" fill="#c05090">柴犬同好</text>
+
+<rect x="382" y="158" width="76"  height="26" rx="13" class="tag-blue"/>
+<text x="420" y="175" text-anchor="middle" class="t-tag" fill="#4070b8">Net. Infra</text>
+
+<!-- ═══════════ DIVIDER ═══════════ -->
+<line x1="28" y1="198" x2="772" y2="198" stroke="#f0e4f8" stroke-width="1"/>
+
+<!-- ═══════════ ABOUT ME SECTION ═══════════ -->
+<text x="36" y="224" class="t-sub">A B O U T &nbsp; M E</text>
+
+<!-- grid: 2 columns × 2 rows -->
+
+<!-- row 1 col 1 -->
+<circle cx="46" cy="254" r="5" class="dot-blue"/>
+<text x="60" y="257" class="t-label">网络工程师</text>
+<text x="60" y="273" class="t-desc">Dlink · 深圳</text>
+
+<!-- row 1 col 2 -->
+<circle cx="422" cy="254" r="5" class="dot-pink"/>
+<text x="436" y="257" class="t-label">二次元爱好者</text>
+<text x="436" y="273" class="t-desc">名侦探柯南 / LoveLive</text>
+
+<!-- row 2 col 1 -->
+<circle cx="46" cy="304" r="5" class="dot-purple"/>
+<text x="60" y="307" class="t-label">代码匠人</text>
+<text x="60" y="323" class="t-desc">Python · TypeScript</text>
+
+<!-- row 2 col 2 -->
+<circle cx="422" cy="304" r="5" class="dot-green"/>
+<text x="436" y="307" class="t-label">柴犬铲屎官</text>
+<text x="436" y="323" class="t-desc">Shiba Inu forever</text>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<line x1="28" y1="350" x2="772" y2="350" stroke="#f0e4f8" stroke-width="1"/>
+
+<!-- status dot + text -->
+<circle cx="46" cy="378" r="4" class="status-dot"/>
+<text x="58" y="382" class="t-status">Online · coding now</text>
+
+<!-- star decoration -->
+<g transform="translate(680,368)">
+  <text x="0"  y="14" class="star">✦</text>
+  <text x="18" y="14" class="star">✦</text>
+  <text x="36" y="14" class="star">✦</text>
+</g>
+
+<!-- corner decorations -->
+<circle cx="760" cy="36" r="3" fill="#e8d0f8" opacity="0.6"/>
+<circle cx="748" cy="48" r="2" fill="#f8c8e0" opacity="0.5"/>
+<circle cx="36"  cy="398" r="2.5" fill="#d8c8f0" opacity="0.5"/>
+<circle cx="50"  cy="408" r="2" fill="#f0d8e8" opacity="0.4"/>
+
+</svg>
