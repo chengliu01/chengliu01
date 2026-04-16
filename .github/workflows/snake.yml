@@ -1,12 +1,10 @@
 name: Snake Animation
-
 on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
   push:
     branches: [main]
-
 jobs:
   snake:
     runs-on: ubuntu-latest
