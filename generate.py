@@ -1,5 +1,28 @@
+import re
 from config import *
-from xml.sax.saxutils import escape as _xe
+from xml.sax.saxutils import escape as _xe, quoteattr as _qa
+
+# Markdown 风格链接：[显示文字](https://完整链接)，可出现在 HANDLE / BIO / ABOUT 等字段
+_MD_LINK = re.compile(r"\[([^\]]*)\]\(([^)]+)\)")
+
+def svg_text_md(x, y, s, attrs, link_fill="#7040a8"):
+    """将含 [label](url) 的字符串渲染为 SVG <text>，链接可点击并在新标签页打开。"""
+    if s is None or not _MD_LINK.search(s):
+        return f'<text x="{x}" y="{y}" {attrs}>{_xe(s or "")}</text>'
+    parts = []
+    pos = 0
+    for m in _MD_LINK.finditer(s):
+        if m.start() > pos:
+            parts.append(f"<tspan>{_xe(s[pos:m.start()])}</tspan>")
+        href = _qa(m.group(2).strip())
+        parts.append(
+            f"<a href={href} target=\"_blank\" rel=\"noopener noreferrer\">"
+            f'<tspan fill="{link_fill}" text-decoration="underline">{_xe(m.group(1))}</tspan></a>'
+        )
+        pos = m.end()
+    if pos < len(s):
+        parts.append(f"<tspan>{_xe(s[pos:])}</tspan>")
+    return f'<text x="{x}" y="{y}" {attrs}>{"".join(parts)}</text>'
 
 # ── tag theme lookup ──────────────────────────────────────────
 THEMES = {
@@ -70,8 +93,8 @@ def build_about():
         cx,cy,tx,ty1,ty2 = positions[i]
         dot = item["dot"]
         out.append(f'<circle cx="{cx}" cy="{cy}" r="5" fill="{dot}"/>')
-        out.append(f'<text x="{tx}" y="{ty1}" font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460">{item["title"]}</text>')
-        out.append(f'<text x="{tx}" y="{ty2}" font-family="sans-serif" font-size="12" fill="#a888cc">{item["sub"]}</text>')
+        out.append(svg_text_md(tx, ty1, item["title"], 'font-family="sans-serif" font-size="14" font-weight="600" fill="#3a2460"', link_fill="#5040a0"))
+        out.append(svg_text_md(tx, ty2, item["sub"], 'font-family="sans-serif" font-size="12" fill="#a888cc"', link_fill="#8060c0"))
     return '\n'.join(out)
 
 # ── bio lines ─────────────────────────────────────────────────
@@ -80,10 +103,15 @@ def build_bio():
     base_y = 390
     for i, line in enumerate(BIO[:3]):
         out.append(
-            f'<text x="36" y="{base_y + i * 22}" '
-            f'font-family="sans-serif" font-size="13" fill="#5a4070">{_xe(line)}</text>'
+            svg_text_md(
+                36,
+                base_y + i * 22,
+                line,
+                'font-family="sans-serif" font-size="13" fill="#5a4070"',
+                link_fill="#5040a0",
+            )
         )
-    return '\n'.join(out)
+    return "\n".join(out)
 
 # ── phrase animations ─────────────────────────────────────────
 def build_phrases():
@@ -162,7 +190,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="8
 </g>
 <text x="200" y="58" font-family="sans-serif" font-size="11" fill="#c0a0d8" letter-spacing="4">{SUBTITLE}</text>
 <text x="200" y="95" font-family="sans-serif" font-size="30" font-weight="700" fill="#3a2460">{NAME}</text>
-<text x="200" y="117" font-family="monospace" font-size="12" fill="#9878b8">{HANDLE}</text>
+{svg_text_md(200, 117, HANDLE, 'font-family="monospace" font-size="12" fill="#9878b8"', link_fill="#7040a8")}
 <g font-family="sans-serif" font-size="14" fill="#7040a8">
 {build_phrases()}
   <text x="200" y="143" class="cur" fill="#b070e0">|</text>

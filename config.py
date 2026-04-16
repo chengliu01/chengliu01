@@ -3,7 +3,8 @@
 # ═══════════════════════════════════════════
 
 NAME        = "Cheng Liu"
-HANDLE      = "@chengliu01 · China"
+# 支持 Markdown 链接：[文字](https://...) 会渲染为可点击下划线，在浏览器中打开 SVG 时生效
+HANDLE      = '@chengliu01 · China · [Scholar](https://scholar.google.com/citations?user=02Xo4iYAAAAJ)'
 
 # 卡片右上角小字（日文/韩文装饰，可改可删）
 SUBTITLE    = "A Engineer/Researcher"
