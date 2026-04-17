@@ -5,6 +5,7 @@
 <br/>
 
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-4285F4?style=flat&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=02Xo4iYAAAAJ)
+[![Website](https://img.shields.io/badge/iyourick.com-6366f1?style=flat&logo=google-chrome&logoColor=white)](https://iyourick.com)
 
 <br/>
 
